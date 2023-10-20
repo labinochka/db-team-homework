@@ -39,7 +39,7 @@ create table train
     isWork                    boolean   not null,
 
 
-    constraint train_uuid_pk primary key (id),
+    constraint train_id_pk primary key (id),
     constraint train_path_fk foreign key (path_id) references path (id)
 );
 
@@ -52,7 +52,7 @@ create table ticket
 
     constraint ticket_id_pk primary key (id),
     constraint ticket_client_fk foreign key (client_id) references client (id),
-    constraint like_post_fk foreign key (train_id) references train (id)
+    constraint ticket_post_fk foreign key (train_id) references train (id)
 );
 
 insert into client(name, lastname, patronymic, birthday, email, phone, passport_series)
