@@ -15,7 +15,7 @@ create table client
     constraint client_phone_uk unique (phone),
     constraint client_passport_series_ck check (length(passport_series) = 4),
     constraint client_email_ck check (email like '%@%'),
-    constraint person_phone_ck check (phone like '%+%')
+    constraint client_phone_ck check (phone like '%+%')
 );
 
 create table path
@@ -52,7 +52,7 @@ create table ticket
 
     constraint ticket_id_pk primary key (id),
     constraint ticket_client_fk foreign key (client_id) references client (id),
-    constraint ticket_post_fk foreign key (train_id) references train (id)
+    constraint ticket_train_fk foreign key (train_id) references train (id)
 );
 
 insert into client(name, lastname, patronymic, birthday, email, phone, passport_series)
