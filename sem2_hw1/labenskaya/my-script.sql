@@ -2,7 +2,7 @@
 \set flight_id random(2880, 214867)
 \set boarding_no random(1, 90)
 \set new_amount random(1000, 30000)
-\set flight_id_new_ticket 2880
+\set flight_id_new_ticket 3940
 
 begin;
 select ticket_no
@@ -41,6 +41,6 @@ insert into ticket_flights (ticket_no, flight_id, fare_conditions, amount)
 values ('0005434204322', :flight_id_new_ticket, 'Economy', :amount);
 
 delete
-from boarding_passes
-where flight_id > :flight_id;
+from ticket_flights
+where flight_id = :flight_id_new_ticket;
 end;
